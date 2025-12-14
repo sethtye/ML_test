@@ -1,0 +1,34 @@
+
+    <html>
+    <head>
+      <title>Martin Luther: A Gamebook</title>
+      <link rel="stylesheet" href="assets/style.css">
+    </head>
+    <body>
+      <h1>Martin Luther: A Gamebook</h1>
+      <p>Begin your journey. Each failure hardens your heart. After five, you must begin again.</p>
+      <a class="choice" href="storm-1505.html" onclick="resetGame()">Begin</a>
+      <div class="footer">Martin Luther Gamebook</div>
+
+<script>
+const MAX_TRIES = 5;
+
+function failAndRedirect(backPage) {
+  let tries = parseInt(localStorage.getItem("tries") || "0");
+  tries += 1;
+  localStorage.setItem("tries", tries);
+
+  if (tries >= MAX_TRIES) {
+    window.location.href = "too-many-failures.html";
+  } else {
+    window.location.href = backPage;
+  }
+}
+
+function resetGame() {
+  localStorage.removeItem("tries");
+}
+</script>
+
+    </body>
+    </html>

@@ -1,0 +1,36 @@
+
+    <html>
+    <head>
+      <title>A Hardened Heart</title>
+      <link rel="stylesheet" href="assets/style.css">
+    </head>
+    <body>
+      <h1>A Hardened Heart</h1>
+      <p>You have stumbled too many times. Like Luther before the light, you are exhausted by your own striving. Return to the beginning, for only grace — not effort — can carry you through.</p>
+
+    <a class="choice" href="index.html" onclick="resetGame()">Begin Again</a>
+
+      <div class="footer">Martin Luther Gamebook</div>
+
+<script>
+const MAX_TRIES = 5;
+
+function failAndRedirect(backPage) {
+  let tries = parseInt(localStorage.getItem("tries") || "0");
+  tries += 1;
+  localStorage.setItem("tries", tries);
+
+  if (tries >= MAX_TRIES) {
+    window.location.href = "too-many-failures.html";
+  } else {
+    window.location.href = backPage;
+  }
+}
+
+function resetGame() {
+  localStorage.removeItem("tries");
+}
+</script>
+
+    </body>
+    </html>
