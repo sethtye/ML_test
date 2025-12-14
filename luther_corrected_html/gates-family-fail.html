@@ -1,0 +1,36 @@
+
+    <html>
+    <head>
+      <title>The Broken Promise</title>
+      <link rel="stylesheet" href="assets/style.css">
+    </head>
+    <body>
+      <h1>The Broken Promise</h1>
+      <p>You abandon your vow. Your conscience screams.</p>
+
+    <a class="choice" href="#" onclick="failAndRedirect('gates-1505.html')">Go back</a>
+
+      <div class="footer">Martin Luther Gamebook</div>
+
+<script>
+const MAX_TRIES = 5;
+
+function failAndRedirect(backPage) {
+  let tries = parseInt(localStorage.getItem("tries") || "0");
+  tries += 1;
+  localStorage.setItem("tries", tries);
+
+  if (tries >= MAX_TRIES) {
+    window.location.href = "too-many-failures.html";
+  } else {
+    window.location.href = backPage;
+  }
+}
+
+function resetGame() {
+  localStorage.removeItem("tries");
+}
+</script>
+
+    </body>
+    </html>
